@@ -4,10 +4,12 @@
 package cumulative.poetry;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import cumulative.poetry.implementation.OnlyPoet;
+import cumulative.poetry.implementation.SingerPoet;
 
 public class PoetTest {
 	@Test
@@ -20,5 +22,12 @@ public class PoetTest {
 	public void fullStory() {
 		PoetI poet = new OnlyPoet();
 		assertFalse("Poet should say something, but said nothing", poet.recite(12).isEmpty());
+	}
+	
+	@Test
+	public void echoVsNormal() {
+		OnlyPoet oPoet = new OnlyPoet();
+		SingerPoet sPoet = new SingerPoet();
+		assertTrue("Echo is twice normal",oPoet.recite(5).split("\n").length*2-1==sPoet.recite(5).split("\n").length);
 	}
 }
