@@ -3,19 +3,22 @@
  */
 package cumulative.poetry;
 
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import cumulative.poetry.implementation.OnlyPoet;
 
 public class PoetTest {
 	@Test
 	public void shouldSaySomething() {
-		Poet poet = new Poet();
+		PoetI poet = new OnlyPoet();
 		assertFalse("Poet should say something, but said nothing", poet.recite(1).isEmpty());
 	}
 
 	@Test
 	public void fullStory() {
-		Poet poet = new Poet();
+		PoetI poet = new OnlyPoet();
 		assertFalse("Poet should say something, but said nothing", poet.recite(12).isEmpty());
 	}
 }
