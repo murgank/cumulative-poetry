@@ -11,10 +11,10 @@ public class Poetry {
 
 	public static void main(String[] args) {
 		PoetI poet;
-		CommandLineArgsParser parser = new CommandLineArgsParser((ArrayList) Arrays.asList(args));
+		CommandLineArgsParser parser = new CommandLineArgsParser(new ArrayList<String>(Arrays.asList(args)));
 		try {
 			poet = PoetFactory.createPoet(parser.toEcho());
-			if (parser.dayToRecite()!=-1) {
+			if (parser.dayToRecite() != -1) {
 				System.out.println(poet.recite(parser.dayToRecite()));
 			} else if (parser.recite()) {
 				System.out.println(poet.reciteDayWise());
