@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import cumulative.poetry.PoetI;
-import cumulative.poetry.implementation.OnlyPoet;
-import cumulative.poetry.implementation.SingerPoet;
+import cumulative.poetry.factory.PoetFactory;
 import cumulative.poetry.utilities.CommandLineArgsParser;
 
 public class Poetry {
@@ -14,11 +13,7 @@ public class Poetry {
 		PoetI poet;
 		CommandLineArgsParser parser = new CommandLineArgsParser((ArrayList) Arrays.asList(args));
 		try {
-			if (parser.toEcho()) {
-				poet = new SingerPoet();
-			} else {
-				poet = new OnlyPoet();
-			}
+			poet = PoetFactory.createPoet(parser.toEcho());
 			if (parser.dayToRecite()!=-1) {
 				System.out.println(poet.recite(parser.dayToRecite()));
 			} else if (parser.recite()) {
