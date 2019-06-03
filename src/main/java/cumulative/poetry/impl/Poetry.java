@@ -1,34 +1,29 @@
 package cumulative.poetry.impl;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import cumulative.poetry.PoetI;
 import cumulative.poetry.implementation.OnlyPoet;
 import cumulative.poetry.implementation.SingerPoet;
+import cumulative.poetry.utilities.CommandLineArgsParser;
 
 public class Poetry {
 
 	public static void main(String[] args) {
 		PoetI poet;
-		List<String> argsList = new ArrayList<String>();
-		for (String arg : args) {
-			argsList.add(arg);
-		}
+		CommandLineArgsParser parser = new CommandLineArgsParser((ArrayList) Arrays.asList(args));
 		try {
-			if (argsList.contains("--echo")) {
+			if (parser.toEcho()) {
 				poet = new SingerPoet();
 			} else {
 				poet = new OnlyPoet();
 			}
-			if (argsList.contains("--reveal-for-day")) {
-				int index = argsList.indexOf("--reveal-for-day");
-				System.out.println(poet.recite(Integer.parseInt(args[index + 1])));
-			} else if (argsList.contains("--recite")) {
+			if (parser.dayToRecite()!=-1) {
+				System.out.println(poet.recite(parser.dayToRecite()));
+			} else if (parser.recite()) {
 				System.out.println(poet.reciteDayWise());
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Please provide command line args");
 		} catch (NumberFormatException e) {
 			System.out.println("Number invalid");
 		} catch (Exception e) {
