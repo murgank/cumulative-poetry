@@ -9,7 +9,16 @@ public interface PoetI {
 			"the house that Jack built.\n\t" };
 	String prefix = "This is ";
 
-	public String recite(int day);
+	public default String recite(int day) {
+		StringBuilder poemStory = new StringBuilder();
+		poemStory.append(prefix);
+		for (int i = (poetry.length - day); i < poetry.length; i++) {
+			poemStory.append(reciteInside(i));
+		}
+		return poemStory.toString();
+	}
+	
+	public String reciteInside(int line);
 
 	public default String reciteDayWise() {
 		StringBuilder song = new StringBuilder();

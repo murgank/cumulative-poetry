@@ -10,9 +10,7 @@ public class CommandLineArgsParser {
 	}
 
 	public boolean toEcho() {
-		if (inputArgs.contains("--echo"))
-			return true;
-		return false;
+		return inputArgs.contains("--echo");
 	}
 	
 	public int dayToRecite() throws NumberFormatException{
