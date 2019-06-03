@@ -13,7 +13,7 @@ public interface PoetI {
 
 	public default String reciteDayWise() {
 		StringBuilder song = new StringBuilder();
-		for(int i=1;i<=12;i++) {
+		for(int i=1;i<=poetry.length;i++) {
 			song.append("Day "+i+" -\n");
 			song.append(recite(i)+"\n");
 		}
