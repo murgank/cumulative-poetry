@@ -1,4 +1,4 @@
-package cumulative.poetry.implementation;
+package cumulative.poetry.variousPoets;
 
 import cumulative.poetry.PoetI;
 

@@ -8,8 +8,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import cumulative.poetry.implementation.OnlyPoet;
-import cumulative.poetry.implementation.SingerPoet;
+import cumulative.poetry.variousPoets.OnlyPoet;
+import cumulative.poetry.variousPoets.SingerPoet;
 
 public class PoetTest {
 	@Test
